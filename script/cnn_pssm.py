@@ -223,7 +223,7 @@ auprc = average_precision_score(y,x)
 end=time.ctime()
 w = open('../Run_result.txt','a')
 if os.popen("grep $'Source' ../Run_result.txt").read():pass
-else:w.write('Source\tTarget\tMethod\tBatch_size\tn_epochs\tlearning_rate\tAUC\tAUPRC\tAccuracy\tPrecision\tRecall\tSpecificity\tF1\tStart\tEnd\n')
+else:w.write('Source\tTarget\tMethod\tBatch_size\tSequence_size\tn_epochs\tlearning_rate\tAUC\tAUPRC\tAccuracy\tPrecision\tRecall\tSpecificity\tF1\tStart\tEnd\n')
 w.write('Human-' + virus + '\tHuman-' + virus + '\tDNN\t' + str(batch_size) + '\t' + str(seq_size) + '\t' + str(n_epochs) + '\t' + str(lr) + '\t%.3f'%auc + '\t%.3f'%auprc + '\t%.3f'%accuracy + '\t%.3f'%prec + '\t%.3f'%recall + '\t%.3f'%spec + '\t%.3f'%f1 + '\t'+str(start) + '\t' + str(end) + '\n')
 
 
