@@ -39,7 +39,7 @@ The human-virus systems and related parameters can be changed in the above shell
   1300 human-Hepatitis PPIs, 13000 non-human-Hepatitis PPIs.
   927 human-DENV PPIs, 9270 non-human-DENV PPIs.
   709 human-ZIKV PPIs, 7090 non-human-ZIKV PPIs.
-  586 human-SARS-CoV-2 PPIs, 5860 non-human-SARS-CoV-2 PPIs.
+  568 human-SARS-CoV-2 PPIs, 5680 non-human-SARS-CoV-2 PPIs.
   
 ### Requirements ###
   - Tensorflow (==1.7.0)
