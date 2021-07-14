@@ -45,14 +45,12 @@ KTF.set_session(session)
 id1_index = 0
 id2_index = 1
 label_index = 2
-if len(sys.argv) == 9:
-    target_file, target_id2seq_file, source_virus, target_virus, batch_size, hidden_dim, dense_dim, n_epochs  = sys.argv[1:]
-    batch_size = int(batch_size)
-    hidden_dim = int(hidden_dim)
-    dense_dim = int(dense_dim)
-    n_epochs = int(n_epochs)
-else:
-    print('please input all parameters!')
+
+target_file, target_id2seq_file, source_virus, target_virus, batch_size, hidden_dim, dense_dim, n_epochs  = sys.argv[1:]
+batch_size = int(batch_size)
+hidden_dim = int(hidden_dim)
+dense_dim = int(dense_dim)
+n_epochs = int(n_epochs)
 
 seq_size = 2000
 # batch_size = 64
