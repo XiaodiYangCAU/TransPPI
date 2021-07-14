@@ -47,8 +47,12 @@ The human-virus systems and related parameters can be changed in the above shell
   - scikit-learn (==0.22.1)
   - numpy (==1.16.6)
 
-###Use the following command to install all dependent packages ###
+### Use the following command to install all dependent packages ###
   pip install requirements.txt
+
+### Reference ###
+Part of the code was modified from https://github.com/muhaochen/seq_ppi and the corresponding reference is:
+Chen,M. et al. (2019) Multifaceted protein-protein interaction prediction based on Siamese residual RCNN. Bioinformatics, 35, i305–i314.
 
 ### Citation ###
 Please kindly cite the paper if you use refers to the paper, code or datasets.
