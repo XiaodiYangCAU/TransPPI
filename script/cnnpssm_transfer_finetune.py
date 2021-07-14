@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 #-*-coding:utf-8
 
+### Reference ###
+# Part of the code was modified from https://github.com/muhaochen/seq_ppi and the corresponding reference is:
+# Chen,M. et al. (2019) Multifaceted protein-protein interaction prediction based on Siamese residual RCNN. Bioinformatics, 35, i305–i314.
+
 from __future__ import division
 import time
 from numpy.random import seed
