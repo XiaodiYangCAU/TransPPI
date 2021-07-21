@@ -2,7 +2,9 @@
 #-*-coding:utf-8
 
 ### Reference ###
-# Part of the code was modified from https://github.com/muhaochen/seq_ppi and the corresponding reference is:
+# Author information: Xiaodi Yang, China Agricultural University, email: xiao_di_yang@163.com.
+# Cititation: Yamg,X. et al. (2021) Transfer learning via multi-scale convolutional neural layers for human-virus protein-protein interaction prediction. Bioinformatics.
+# Part of the code was modified from https://github.com/muhaochen/seq_ppi and the corresponding reference is: 
 # Chen,M. et al. (2019) Multifaceted protein-protein interaction prediction based on Siamese residual RCNN. Bioinformatics, 35, i305–i314.
 
 from __future__ import division
