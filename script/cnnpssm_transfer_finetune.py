@@ -45,6 +45,7 @@ session=tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 KTF.set_session(session)
 
 
+
 # Parameter setting
 id1_index = 0
 id2_index = 1
@@ -74,7 +75,6 @@ for line in open(target_id2seq_file):
     id2seqindex[line[0]] = seqindex
     seqs.append(line[1])
     seqindex += 1
-
 
 from tqdm import tqdm
 seq2p = s2p()
@@ -115,7 +115,6 @@ del seq_array
 seq_index1 = np.array([line[id1_index] for line in tqdm(raw_data)])
 seq_index2 = np.array([line[id2_index] for line in tqdm(raw_data)])
 
-
 class_map = {'0':1,'1':0}
 class_labels = np.zeros((len(raw_data), 2))
 for i in range(len(raw_data)):
@@ -141,8 +140,6 @@ def build_model():
     merge_model = Model(inputs=[seq_input1, seq_input2], outputs=[main_output])
     return merge_model, merge_vector
 
-
-
 from sklearn.model_selection import KFold, StratifiedKFold, ShuffleSplit
 kf = StratifiedKFold(n_splits=5, random_state=2066, shuffle=True)
 train_test = []
@@ -152,7 +149,6 @@ for train, test in kf.split(class_labels[:,0],class_labels[:,0]):
     train_test.append((train, test))
 
 print (len(train_test))
-
 
 # initialization
 n_model = 0
@@ -166,7 +162,6 @@ n_false_neg = 0
 
 from keras.utils import plot_model
 from collections import Counter
-
 
 source_file='../results/'+source_virus+'_cnnpssm.txt'
 for train, test in train_test:
@@ -213,9 +208,6 @@ for train, test in train_test:
                 n_true_neg += 1
     w.close()
 
-
-
-
 # Calculate metrics
 accuracy = n_hit / n_total
 prec = n_true_pos / (n_true_pos + n_false_pos)
@@ -223,8 +215,6 @@ recall = n_true_pos / n_pos
 spec = n_true_neg / (n_true_neg + n_false_pos)
 f1 = 2. * prec * recall / (prec + recall)
 print (accuracy, prec, recall, f1)
-
-
 
 result_file = '../results/'+target_virus+'_'+source_virus+'_transfer_finetune.txt'
 basename = '../results/'+target_virus+'_'+source_virus+'_transfer_finetune_score'
@@ -242,16 +232,3 @@ w = open('../Run_result.txt','a')
 if os.popen("grep $'Source' ../Run_result.txt").read():pass
 else:w.write('Source\tTarget\tMethod\tBatch_size\tSequence_size\tn_epochs\tlearning_rate\tAUC\tAUPRC\tAccuracy\tPrecision\tRecall\tSpecificity\tF1\tStart\tEnd\n')
 w.write('Human-' + source_virus + '\tHuman-' + target_virus + '\tFine-tuning\t' + str(batch_size) + '\t' + str(seq_size) + '\t' + str(n_epochs) + '\t' + str(lr) + '\t%.3f'%auc + '\t%.3f'%auprc + '\t%.3f'%accuracy + '\t%.3f'%prec + '\t%.3f'%recall + '\t%.3f'%spec + '\t%.3f'%f1 + '\t'+str(start) + '\t' + str(end) + '\n')
-
-
-
-
-
-
-
-
-
-
-
-
-
