@@ -31,6 +31,8 @@ from keras.layers.pooling import MaxPooling1D, GlobalMaxPooling1D
 from keras.optimizers import Adam
 
 import numpy as np
+from numpy import linalg as LA
+import scipy
 import sklearn
 from sklearn.metrics import roc_auc_score, average_precision_score
 
