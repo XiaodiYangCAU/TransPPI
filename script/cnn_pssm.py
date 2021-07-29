@@ -77,8 +77,6 @@ for line in open(id2seq_file):
     seqs.append(line[1])
     seqindex += 1
 
-
-
 from tqdm import tqdm
 seq2p = s2p()
 index2id1,index2id2={},{}
@@ -142,7 +140,6 @@ def build_model():
     main_output = Dense(2, activation='softmax', name='Dense_3')(x)
     merge_model = Model(inputs=[seq_input1, seq_input2], outputs=[main_output])
     return merge_model, merge_vector
-
 
 from sklearn.model_selection import KFold, StratifiedKFold, ShuffleSplit
 kf = StratifiedKFold(n_splits=5, random_state=2066, shuffle=True)
@@ -215,7 +212,6 @@ spec = n_true_neg / (n_true_neg + n_false_pos)
 f1 = 2. * prec * recall / (prec + recall)
 print (accuracy, prec, recall, f1)
 
-
 basename = result_file+'score'
 os.system('cat '+basename+'1 '+basename+'2 '+basename+'3 '+basename+'4 '+basename+'5 > '+ result_file)
 data=np.genfromtxt(result_file, dtype=str)
@@ -231,14 +227,3 @@ w = open('../Run_result.txt','a')
 if os.popen("grep $'Source' ../Run_result.txt").read():pass
 else:w.write('Source\tTarget\tMethod\tBatch_size\tSequence_size\tn_epochs\tlearning_rate\tAUC\tAUPRC\tAccuracy\tPrecision\tRecall\tSpecificity\tF1\tStart\tEnd\n')
 w.write('Human-' + virus + '\tHuman-' + virus + '\tDNN\t' + str(batch_size) + '\t' + str(seq_size) + '\t' + str(n_epochs) + '\t' + str(lr) + '\t%.3f'%auc + '\t%.3f'%auprc + '\t%.3f'%accuracy + '\t%.3f'%prec + '\t%.3f'%recall + '\t%.3f'%spec + '\t%.3f'%f1 + '\t'+str(start) + '\t' + str(end) + '\n')
-
-
-
-
-
-
-
-
-
-
-
