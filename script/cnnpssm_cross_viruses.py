@@ -45,6 +45,7 @@ session=tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 KTF.set_session(session)
 
 
+
 # Parameter setting
 id1_index = 0
 id2_index = 1
@@ -52,8 +53,6 @@ label_index = 2
 
 test_file, test_id2seq_file, train_virus, test_virus, batch_size, hidden_dim, dense_dim, n_epochs = sys.argv[1:]
 n_epochs = int(n_epochs)
-
-
 
 seq_size = 2000
 # batch_size = 64
@@ -73,7 +72,6 @@ for line in open(test_id2seq_file):
     id2seqindex[line[0]] = seqindex
     seqs.append(line[1])
     seqindex += 1
-
 
 from tqdm import tqdm
 seq2p = s2p()
@@ -114,13 +112,11 @@ del seq_array
 seq_index1 = np.array([line[id1_index] for line in tqdm(raw_data)])
 seq_index2 = np.array([line[id2_index] for line in tqdm(raw_data)])
 
-
 class_map = {'0':1,'1':0}
 class_labels = np.zeros((len(raw_data), 2))
 for i in range(len(raw_data)):
     class_labels[i][class_map[raw_data[i][label_index]]] = 1.
 print(class_labels)
-
 
 from sklearn.model_selection import KFold, StratifiedKFold, ShuffleSplit
 kf = StratifiedKFold(n_splits=5, random_state=2066, shuffle=True)
@@ -189,7 +185,6 @@ spec = n_true_neg / (n_true_neg + n_false_pos)
 f1 = 2. * prec * recall / (prec + recall)
 print (accuracy, prec, recall, f1)
 
-
 result_file = '../results/'+test_virus+'_'+train_virus+'_cross_viral_test.txt'
 basename = test_virus+'_'+train_virus+'_cross_viral_test_score'
 os.system('cat '+basename+'1 '+basename+'2 '+basename+'3 '+basename+'4 '+basename+'5 > '+ result_file)
@@ -206,14 +201,3 @@ w = open('../Run_result.txt','a')
 if os.popen("grep $'Source' ../Run_result.txt").read():pass
 else:w.write('Source\tTarget\tMethod\tBatch_size\tSequence_size\tn_epochs\tlearning_rate\tAUC\tAUPRC\tAccuracy\tPrecision\tRecall\tSpecificity\tF1\tStart\tEnd\n')
 w.write('Human-' + train_virus + '\tHuman-' + test_virus + '\tCross viral test\t' + str(batch_size) + '\t' + str(seq_size) + '\t' + str(n_epochs) + '\t' + str(lr) + '\t%.3f'%auc + '\t%.3f'%auprc + '\t%.3f'%accuracy + '\t%.3f'%prec + '\t%.3f'%recall + '\t%.3f'%spec + '\t%.3f'%f1 + '\t'+str(start) + '\t' + str(end) + '\n')
-
-
-
-
-
-
-
-
-
-
-
